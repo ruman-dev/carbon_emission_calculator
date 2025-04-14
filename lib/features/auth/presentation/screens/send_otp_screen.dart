@@ -1,5 +1,5 @@
 import 'package:carbon_emission_calculator/core/global_widget/custom_button.dart';
-import 'package:carbon_emission_calculator/core/global_widget/custom_richtext.dart';
+import 'package:carbon_emission_calculator/core/global_widget/custom_richtext_poppins.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_text_inter.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_text_poppins.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_textfield.dart';
@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/global_widget/custom_richtext_inter.dart';
 import '../../../../core/utils/helpers/validation.dart';
+import '../../../../core/utils/services/notification_services.dart';
 
 class SendOtpScreen extends StatelessWidget {
   SendOtpScreen({super.key});
@@ -49,16 +51,24 @@ class SendOtpScreen extends StatelessWidget {
                   SizedBox(height: screenWidth * 0.085),
                   CustomButton(
                     text: 'Send OTP',
-                    onPressed: () {
+                    onPressed: () async {
                       if (_globalKey.currentState!.validate()) {
-                        Get.toNamed(Routes.verifyOtpScreen);
-                        _controller.emailController.clear();
+                        _controller.isLoading.value = true;
+
+                        final message = await _controller.resetPassword(email: _controller.emailController.text.trim());
+                        if (message!.contains('Success')) {
+                          NotificationService.notificationMessage('Success', 'If email exists, OTP sent successfully!');
+                          Get.offAllNamed(Routes.verifyOtpScreen);
+                          _controller.emailController.clear();
+                        } else {
+                          NotificationService.notificationMessage('Error', message, Colors.red);
+                        }
                       }
                     },
                   ),
                   SizedBox(height: screenWidth * 1.08),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Powered By ',
                       secondaryText: 'M360 ICT',
                       primeFontSize: 12.sp,

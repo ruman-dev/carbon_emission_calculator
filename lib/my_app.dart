@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
           transitionDuration: const Duration(milliseconds: 200),
           navigatorKey: Get.key,
-          initialRoute: Routes.splashScreen,
+          initialRoute: Routes.homeScreen,
         );
       },
     );

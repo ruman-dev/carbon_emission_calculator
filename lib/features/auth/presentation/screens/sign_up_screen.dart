@@ -1,5 +1,5 @@
 import 'package:carbon_emission_calculator/core/global_widget/custom_button.dart';
-import 'package:carbon_emission_calculator/core/global_widget/custom_richtext.dart';
+import 'package:carbon_emission_calculator/core/global_widget/custom_richtext_poppins.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_text_inter.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_text_poppins.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_textfield.dart';
@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/global_widget/custom_richtext_inter.dart';
 import '../../../../core/resources/assets/asset_path.dart';
 import '../../controller/sign_up_controller.dart';
-import '../../services/auth_services.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -149,7 +149,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   SizedBox(height: screenWidth * 0.09),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Already have an account? ',
                       secondaryText: 'Sign In',
                       primeFontSize: 12.sp,
@@ -170,7 +170,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   SizedBox(height: screenWidth * 0.06),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Powered By ',
                       secondaryText: 'M360 ICT',
                       primeFontSize: 12.sp,

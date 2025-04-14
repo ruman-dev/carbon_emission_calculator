@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573252167469",
+    "project_id": "carbonemission-6ea2c",
+    "storage_bucket": "carbonemission-6ea2c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573252167469:android:f7a0f45c2be8b147e515a4",
+        "android_client_info": {
+          "package_name": "com.example.carbon_emission_calculator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAISjO7AixAEJj8b9-fNuV6Fz6gmi6N8to"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

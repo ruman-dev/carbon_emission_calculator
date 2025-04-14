@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class SignInController extends GetxController {
   var switchRememberMe = false.obs;
   var isObscure = true.obs;
+  var isLoading = false.obs;
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -14,6 +15,8 @@ class SignInController extends GetxController {
   }
 
   Future<String?> userLoginProcess({required String email, required String password}) async {
+    print(email);
+    print(password);
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       return 'Success';
@@ -27,6 +30,8 @@ class SignInController extends GetxController {
       }
     } catch (e) {
       return e.toString();
+    } finally {
+      isLoading.value = false;
     }
   }
 

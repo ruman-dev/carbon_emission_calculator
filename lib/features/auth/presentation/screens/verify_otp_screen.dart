@@ -7,7 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../../core/global_widget/custom_button.dart';
-import '../../../../core/global_widget/custom_richtext.dart';
+import '../../../../core/global_widget/custom_richtext_inter.dart';
+import '../../../../core/global_widget/custom_richtext_poppins.dart';
 import '../../../../core/global_widget/custom_text_inter.dart';
 import '../../../../core/global_widget/custom_text_poppins.dart';
 import '../../../../core/resources/app_colors/app_colors.dart';
@@ -44,7 +45,7 @@ class VerifyOtpScreen extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(height: screenWidth * 0.27),
-                  CustomRichtext(
+                  CustomRichtextInter(
                     primaryText: 'An email has been sent to ',
                     secondaryText: 'user@example.com',
                     primeFontSize: 14.sp,
@@ -113,7 +114,7 @@ class VerifyOtpScreen extends StatelessWidget {
                   ),
                   SizedBox(height: screenWidth * 0.08),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Didn’t Receive a code? ',
                       secondaryText: 'Resend',
                       primeFontSize: 12.sp,
@@ -126,7 +127,7 @@ class VerifyOtpScreen extends StatelessWidget {
                   ),
                   SizedBox(height: screenWidth * 0.8),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Powered By ',
                       secondaryText: 'M360 ICT',
                       primeFontSize: 12.sp,

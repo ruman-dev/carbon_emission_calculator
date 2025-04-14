@@ -1,5 +1,5 @@
 import 'package:carbon_emission_calculator/core/global_widget/custom_button.dart';
-import 'package:carbon_emission_calculator/core/global_widget/custom_richtext.dart';
+import 'package:carbon_emission_calculator/core/global_widget/custom_richtext_poppins.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_text_inter.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_text_poppins.dart';
 import 'package:carbon_emission_calculator/core/global_widget/custom_textfield.dart';
@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/global_widget/custom_richtext_inter.dart';
 import '../../../../core/resources/assets/asset_path.dart';
+import '../../../../core/utils/services/notification_services.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -51,6 +53,7 @@ class SignInScreen extends StatelessWidget {
                   Obx(
                     () => CustomTextfield(
                       hintText: '**********',
+                      controller: _controller.passwordController,
                       validator: (value) => Validation.validatePassword(value),
                       isObsecure: _controller.isObscure.value,
                       suffixImage: AssetPath.toggleIcon,
@@ -94,13 +97,31 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenWidth * 0.085),
-                  CustomButton(
-                    text: 'Sign In',
-                    onPressed: () {
-                      if (_globalKey.currentState!.validate()) {
-                        Get.offAllNamed(Routes.homeScreen);
-                      }
-                    },
+                  Obx(()=> _controller.isLoading.value? Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),)
+                    : CustomButton(
+                      text: 'Sign In',
+                      onPressed: () async {
+                        if (_globalKey.currentState!.validate()) {
+                            _controller.isLoading.value = true;
+
+                            final message = await _controller.userLoginProcess(
+                              email: _controller.emailController.text.trim(),
+                              password: _controller.passwordController.text.trim(),
+                            );
+                            if (message!.contains('Success')) {
+                              NotificationService.notificationMessage('Success', 'Signed In Successfully!');
+                              Get.offAllNamed(Routes.homeScreen);
+
+                              _controller.emailController.clear();
+                              _controller.passwordController.clear();
+                            } else {
+                              NotificationService.notificationMessage('Error', message, Colors.red);
+                            }
+                          } else {
+                            NotificationService.notificationMessage('Error', 'Both Password should be same!', Colors.red);
+                          }
+                        },
+                    ),
                   ),
                   SizedBox(height: screenWidth * 0.085),
                   Center(
@@ -126,7 +147,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                   SizedBox(height: screenWidth * 0.09),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Don’t have an account? ',
                       secondaryText: 'Sign Up',
                       onSecPressed: () {
@@ -144,7 +165,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                   SizedBox(height: screenWidth * 0.3),
                   Center(
-                    child: CustomRichtext(
+                    child: CustomRichtextInter(
                       primaryText: 'Powered By ',
                       secondaryText: 'M360 ICT',
                       primeFontSize: 12.sp,

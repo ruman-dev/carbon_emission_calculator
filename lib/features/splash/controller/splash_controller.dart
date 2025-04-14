@@ -10,6 +10,6 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    moveToOnboarding();
+    // moveToOnboarding();
   }
 }

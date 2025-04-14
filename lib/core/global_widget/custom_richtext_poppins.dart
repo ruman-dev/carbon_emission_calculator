@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomRichtext extends StatelessWidget {
-  const CustomRichtext({
+class CustomRichtextPoppins extends StatelessWidget {
+  const CustomRichtextPoppins({
     super.key,
     required this.primaryText,
     this.secondaryText,
@@ -16,19 +16,24 @@ class CustomRichtext extends StatelessWidget {
     this.secFontSize,
     this.onPrimePressed,
     this.onSecPressed,
-    this.textDecoration,
+    this.textDecoration, this.tertiaryText, this.tertTextColor, this.tertFontWeight, this.tertFontSize, this.onTertPressed,
   });
 
   final String primaryText;
   final String? secondaryText;
+  final String? tertiaryText;
   final Color? primeTextColor;
   final Color? secTextColor;
+  final Color? tertTextColor;
   final FontWeight? primeFontWeight;
   final FontWeight? secFontWeight;
+  final FontWeight? tertFontWeight;
   final double? primeFontSize;
   final double? secFontSize;
+  final double? tertFontSize;
   final void Function()? onPrimePressed;
   final void Function()? onSecPressed;
+  final void Function()? onTertPressed;
   final TextDecoration? textDecoration;
 
   @override
@@ -38,7 +43,7 @@ class CustomRichtext extends StatelessWidget {
         children: [
           TextSpan(
             text: primaryText,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: primeTextColor ?? const Color(0xFF1A202C),
               fontWeight: primeFontWeight ?? FontWeight.w400,
               fontSize: primeFontSize ?? 14.sp,
@@ -48,7 +53,7 @@ class CustomRichtext extends StatelessWidget {
           ),
           TextSpan(
             text: secondaryText,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               fontWeight: secFontWeight ?? FontWeight.w600,
               fontSize: secFontSize ?? 14.sp,
               color: secTextColor ?? const Color(0xFFFF3D00),
@@ -56,6 +61,17 @@ class CustomRichtext extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = onSecPressed, // Click event for secondary text
+          ),
+          TextSpan(
+            text: tertiaryText,
+            style: GoogleFonts.poppins(
+              fontWeight: tertFontWeight ?? FontWeight.w600,
+              fontSize: tertFontSize ?? 14.sp,
+              color: tertTextColor ?? const Color(0xFFFF3D00),
+              decoration: textDecoration ?? TextDecoration.none,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = onTertPressed, // Click event for secondary text
           ),
         ],
       ),
