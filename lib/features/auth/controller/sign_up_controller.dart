@@ -20,10 +20,15 @@ class SignUpController extends GetxController {
     isConfirmPassHide.value = !isConfirmPassHide.value;
   }
 
-
-  Future<String?> userRegistrationProcess({required String email, required String password}) async {
+  Future<String?> userRegistrationProcess({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       return 'Success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -35,7 +40,7 @@ class SignUpController extends GetxController {
       }
     } catch (e) {
       return e.toString();
-    } finally  {
+    } finally {
       isLoading.value = false;
     }
   }

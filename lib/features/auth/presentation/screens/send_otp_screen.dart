@@ -33,14 +33,22 @@ class SendOtpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextPoppins(text: 'Send OTP', fontSize: 30.sp, fontWeight: FontWeight.w500),
+                  CustomTextPoppins(
+                    text: 'Send OTP',
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextInter(
                     text: 'Recover your account in easy steps',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(height: screenWidth * 0.27),
-                  CustomTextInter(text: 'Email', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Email',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextfield(
                     hintText: 'user@example.com',
                     controller: _controller.emailController,
@@ -55,13 +63,22 @@ class SendOtpScreen extends StatelessWidget {
                       if (_globalKey.currentState!.validate()) {
                         _controller.isLoading.value = true;
 
-                        final message = await _controller.resetPassword(email: _controller.emailController.text.trim());
+                        final message = await _controller.resetPassword(
+                          email: _controller.emailController.text.trim(),
+                        );
                         if (message!.contains('Success')) {
-                          NotificationService.notificationMessage('Success', 'If email exists, OTP sent successfully!');
+                          NotificationService.notificationMessage(
+                            'Success',
+                            'If email exists, OTP sent successfully!',
+                          );
                           Get.offAllNamed(Routes.verifyOtpScreen);
                           _controller.emailController.clear();
                         } else {
-                          NotificationService.notificationMessage('Error', message, Colors.red);
+                          NotificationService.notificationMessage(
+                            'Error',
+                            message,
+                            Colors.red,
+                          );
                         }
                       }
                     },

@@ -34,14 +34,22 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextPoppins(text: 'Sign Up', fontSize: 30.sp, fontWeight: FontWeight.w500),
+                  CustomTextPoppins(
+                    text: 'Sign Up',
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextInter(
                     text: 'Let’s save environment together',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(height: screenWidth * 0.1),
-                  CustomTextInter(text: 'Name', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Name',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextfield(
                     hintText: 'e.g: Ahmed Ariyan',
                     controller: _controller.nameController,
@@ -49,7 +57,11 @@ class SignUpScreen extends StatelessWidget {
                     validationText: 'Name can\'t be empty',
                   ),
                   SizedBox(height: screenWidth * 0.05),
-                  CustomTextInter(text: 'Phone Number', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Phone Number',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextfield(
                     hintText: '17XXXXXXXX',
                     controller: _controller.phoneController,
@@ -57,7 +69,11 @@ class SignUpScreen extends StatelessWidget {
                     validator: (value) => Validation.validatePhone(value),
                   ),
                   SizedBox(height: screenWidth * 0.05),
-                  CustomTextInter(text: 'Email', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Email',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextfield(
                     hintText: 'user@example.com',
                     controller: _controller.emailController,
@@ -65,7 +81,11 @@ class SignUpScreen extends StatelessWidget {
                     validator: (value) => Validation.validateEmail(value),
                   ),
                   SizedBox(height: screenWidth * 0.05),
-                  CustomTextInter(text: 'Password', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Password',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   Obx(
                     () => CustomTextfield(
                       hintText: '**********',
@@ -79,7 +99,11 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: screenWidth * 0.05),
-                  CustomTextInter(text: 'Confirm Password', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Confirm Password',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   Obx(
                     () => CustomTextfield(
                       hintText: '**********',
@@ -101,14 +125,18 @@ class SignUpScreen extends StatelessWidget {
                             _controller.confirmPassController.text.trim()) {
                           _controller.isLoading.value = true;
 
-                          final message = await _controller.userRegistrationProcess(
-                            email: _controller.emailController.text.trim(),
-                            password: _controller.passwordController.text.trim(),
-                          );
+                          final message = await _controller
+                              .userRegistrationProcess(
+                                email: _controller.emailController.text.trim(),
+                                password:
+                                    _controller.passwordController.text.trim(),
+                              );
 
                           if (message!.contains('Success')) {
-
-                            NotificationService.notificationMessage('Success', 'Signed Up Successfully!');
+                            NotificationService.notificationMessage(
+                              'Success',
+                              'Signed Up Successfully!',
+                            );
                             Get.offAllNamed(Routes.signInScreen);
 
                             _controller.nameController.clear();
@@ -117,10 +145,18 @@ class SignUpScreen extends StatelessWidget {
                             _controller.passwordController.clear();
                             _controller.confirmPassController.clear();
                           } else {
-                            NotificationService.notificationMessage('Error', message, Colors.red);
+                            NotificationService.notificationMessage(
+                              'Error',
+                              message,
+                              Colors.red,
+                            );
                           }
                         } else {
-                          NotificationService.notificationMessage('Error', 'Both Password should be same!', Colors.red);
+                          NotificationService.notificationMessage(
+                            'Error',
+                            'Both Password should be same!',
+                            Colors.red,
+                          );
                         }
                       }
                     },

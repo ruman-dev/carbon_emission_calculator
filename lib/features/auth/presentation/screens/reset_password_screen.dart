@@ -18,7 +18,8 @@ import '../../../../core/resources/assets/asset_path.dart';
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({super.key});
 
-  final ResetPasswordController _controller = Get.find<ResetPasswordController>();
+  final ResetPasswordController _controller =
+      Get.find<ResetPasswordController>();
   final _globalKey = GlobalKey<FormState>();
 
   @override
@@ -34,14 +35,22 @@ class ResetPasswordScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextPoppins(text: 'Reset Password', fontSize: 30.sp, fontWeight: FontWeight.w500),
+                  CustomTextPoppins(
+                    text: 'Reset Password',
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextInter(
                     text: 'Let’s save environment together',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(height: screenWidth * 0.27),
-                  CustomTextInter(text: 'New Password', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'New Password',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   Obx(
                     () => CustomTextfield(
                       hintText: '**********',
@@ -56,7 +65,11 @@ class ResetPasswordScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: screenWidth * 0.05),
-                  CustomTextInter(text: 'Confirm Password', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Confirm Password',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   Obx(
                     () => CustomTextfield(
                       hintText: '**********',
@@ -76,12 +89,19 @@ class ResetPasswordScreen extends StatelessWidget {
                       if (_globalKey.currentState!.validate()) {
                         if (_controller.newPassController.text.trim() ==
                             _controller.confirmPassController.text.trim()) {
-                          NotificationService.notificationMessage('Success', 'Reset Password Successful!');
+                          NotificationService.notificationMessage(
+                            'Success',
+                            'Reset Password Successful!',
+                          );
                           Get.offAllNamed(Routes.signInScreen);
                           _controller.newPassController.clear();
                           _controller.confirmPassController.clear();
                         } else {
-                          NotificationService.notificationMessage('Error', 'Both Password should be same!', Colors.red);
+                          NotificationService.notificationMessage(
+                            'Error',
+                            'Both Password should be same!',
+                            Colors.red,
+                          );
                         }
                       }
                     },

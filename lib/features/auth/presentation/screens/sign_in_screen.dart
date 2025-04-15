@@ -34,14 +34,22 @@ class SignInScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextPoppins(text: 'Sign In', fontSize: 30.sp, fontWeight: FontWeight.w500),
+                  CustomTextPoppins(
+                    text: 'Sign In',
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextInter(
                     text: 'Let’s save environment together',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(height: screenWidth * 0.27),
-                  CustomTextInter(text: 'Email', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Email',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextfield(
                     hintText: 'user@example.com',
                     controller: _controller.emailController,
@@ -49,7 +57,11 @@ class SignInScreen extends StatelessWidget {
                     validator: (value) => Validation.validateEmail(value),
                   ),
                   SizedBox(height: screenWidth * 0.05),
-                  CustomTextInter(text: 'Password', fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  CustomTextInter(
+                    text: 'Password',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   Obx(
                     () => CustomTextfield(
                       hintText: '**********',
@@ -78,7 +90,11 @@ class SignInScreen extends StatelessWidget {
                               },
                             ),
                           ),
-                          CustomTextInter(text: 'Remember Me', fontSize: 14.sp, fontWeight: FontWeight.w400),
+                          CustomTextInter(
+                            text: 'Remember Me',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ],
                       ),
                       GestureDetector(
@@ -97,31 +113,54 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenWidth * 0.085),
-                  Obx(()=> _controller.isLoading.value? Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),)
-                    : CustomButton(
-                      text: 'Sign In',
-                      onPressed: () async {
-                        if (_globalKey.currentState!.validate()) {
-                            _controller.isLoading.value = true;
+                  Obx(
+                    () =>
+                        _controller.isLoading.value
+                            ? Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              ),
+                            )
+                            : CustomButton(
+                              text: 'Sign In',
+                              onPressed: () async {
+                                if (_globalKey.currentState!.validate()) {
+                                  _controller.isLoading.value = true;
 
-                            final message = await _controller.userLoginProcess(
-                              email: _controller.emailController.text.trim(),
-                              password: _controller.passwordController.text.trim(),
-                            );
-                            if (message!.contains('Success')) {
-                              NotificationService.notificationMessage('Success', 'Signed In Successfully!');
-                              Get.offAllNamed(Routes.homeScreen);
+                                  final message = await _controller
+                                      .userLoginProcess(
+                                        email:
+                                            _controller.emailController.text
+                                                .trim(),
+                                        password:
+                                            _controller.passwordController.text
+                                                .trim(),
+                                      );
+                                  if (message!.contains('Success')) {
+                                    NotificationService.notificationMessage(
+                                      'Success',
+                                      'Signed In Successfully!',
+                                    );
+                                    Get.offAllNamed(Routes.homeScreen);
 
-                              _controller.emailController.clear();
-                              _controller.passwordController.clear();
-                            } else {
-                              NotificationService.notificationMessage('Error', message, Colors.red);
-                            }
-                          } else {
-                            NotificationService.notificationMessage('Error', 'Both Password should be same!', Colors.red);
-                          }
-                        },
-                    ),
+                                    _controller.emailController.clear();
+                                    _controller.passwordController.clear();
+                                  } else {
+                                    NotificationService.notificationMessage(
+                                      'Error',
+                                      message,
+                                      Colors.red,
+                                    );
+                                  }
+                                } else {
+                                  NotificationService.notificationMessage(
+                                    'Error',
+                                    'Both Password should be same!',
+                                    Colors.red,
+                                  );
+                                }
+                              },
+                            ),
                   ),
                   SizedBox(height: screenWidth * 0.085),
                   Center(

@@ -20,7 +20,9 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Center(child: Image.asset(AssetPath.appLogo, height: 214.h, width: 214.w)),
+          Center(
+            child: Image.asset(AssetPath.appLogo, height: 214.h, width: 214.w),
+          ),
           Positioned(
             left: screenWidth * 0.35,
             bottom: screenWidth * 0.1,

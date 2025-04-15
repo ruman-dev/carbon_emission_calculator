@@ -1,3 +1,4 @@
+import 'package:carbon_emission_calculator/features/add/presentation/screens/add_screen.dart';
 import 'package:carbon_emission_calculator/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:carbon_emission_calculator/features/auth/presentation/screens/send_otp_screen.dart';
 import 'package:carbon_emission_calculator/features/auth/presentation/screens/sign_up_screen.dart';
@@ -16,6 +17,7 @@ class Routes {
   static String resetPassScreen = "/resetPassScreen";
   static String signupScreen = "/signupScreen";
   static String homeScreen = "/homeScreen";
+  static String addScreen = "/addScreen";
 
   static List<GetPage> route = [
     GetPage(name: splashScreen, page: () => SplashScreen()),
@@ -25,5 +27,6 @@ class Routes {
     GetPage(name: resetPassScreen, page: () => ResetPasswordScreen()),
     GetPage(name: signupScreen, page: () => SignUpScreen()),
     GetPage(name: homeScreen, page: () => HomeScreen()),
+    GetPage(name: addScreen, page: () => AddScreen()),
   ];
 }

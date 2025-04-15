@@ -14,11 +14,17 @@ class SignInController extends GetxController {
     isObscure.value = !isObscure.value;
   }
 
-  Future<String?> userLoginProcess({required String email, required String password}) async {
+  Future<String?> userLoginProcess({
+    required String email,
+    required String password,
+  }) async {
     print(email);
     print(password);
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       return 'Success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

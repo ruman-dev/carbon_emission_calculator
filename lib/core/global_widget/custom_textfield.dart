@@ -55,9 +55,15 @@ class CustomTextfield extends StatelessWidget {
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         filled: true,
-        border: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.grey)),
-        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.grey)),
-        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.grey)),
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.grey),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.grey),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.grey),
+        ),
         // contentPadding: EdgeInsets.only(left: 0),
         // errorBorder: OutlineInputBorder(
         //   borderSide: BorderSide(color: const Color.fromARGB(255, 144, 14, 5), width: 1.w),
@@ -65,14 +71,23 @@ class CustomTextfield extends StatelessWidget {
         // ),
         fillColor: Colors.white,
         hintText: hintText ?? 'Enter the text',
-        hintStyle: GoogleFonts.inter(fontSize: 16.sp, fontWeight: FontWeight.w400, color: AppColors.lightGrey),
+        hintStyle: GoogleFonts.inter(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
+          color: AppColors.lightGrey,
+        ),
         suffixIcon:
             suffixImage != null
                 ? GestureDetector(
                   onTap: onSuffixTap,
                   child: Padding(
                     padding: EdgeInsets.all(10.w),
-                    child: Image.asset(suffixImage!, width: 24.w, height: 24.h, color: Color(0xFF7F7F8A)),
+                    child: Image.asset(
+                      suffixImage!,
+                      width: 24.w,
+                      height: 24.h,
+                      color: Color(0xFF7F7F8A),
+                    ),
                   ),
                 )
                 : trailingIcon,

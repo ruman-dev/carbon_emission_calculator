@@ -25,8 +25,15 @@ class VerifyOtpScreen extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 60.w,
       height: 60.h,
-      textStyle: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w600, color: Colors.black),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.shade200),
+      textStyle: TextStyle(
+        fontSize: 22.sp,
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+      ),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.grey.shade200,
+      ),
     );
     return Scaffold(
       body: SafeArea(
@@ -38,7 +45,11 @@ class VerifyOtpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextPoppins(text: 'Verify OTP', fontSize: 30.sp, fontWeight: FontWeight.w500),
+                  CustomTextPoppins(
+                    text: 'Verify OTP',
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                   CustomTextInter(
                     text: 'Recover your account in easy steps',
                     fontSize: 14.sp,
@@ -68,7 +79,8 @@ class VerifyOtpScreen extends StatelessWidget {
                       length: 4,
                       autofocus: true,
                       enableSuggestions: true,
-                      separatorBuilder: (index) => SizedBox(width: screenWidth * 0.05),
+                      separatorBuilder:
+                          (index) => SizedBox(width: screenWidth * 0.05),
                       keyboardType: TextInputType.number,
                       defaultPinTheme: defaultPinTheme.copyWith(
                         textStyle: GoogleFonts.inter(
@@ -80,7 +92,10 @@ class VerifyOtpScreen extends StatelessWidget {
                           color: Colors.white,
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(12.w),
-                          border: Border.all(color: const Color(0xFFE3E3E9), width: 1),
+                          border: Border.all(
+                            color: const Color(0xFFE3E3E9),
+                            width: 1,
+                          ),
                         ),
                       ),
                       focusedPinTheme: defaultPinTheme.copyWith(
@@ -93,7 +108,10 @@ class VerifyOtpScreen extends StatelessWidget {
                           color: Colors.white,
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(12.w),
-                          border: Border.all(color: AppColors.primaryColor, width: 1),
+                          border: Border.all(
+                            color: AppColors.primaryColor,
+                            width: 1,
+                          ),
                         ),
                       ),
                       showCursor: true,

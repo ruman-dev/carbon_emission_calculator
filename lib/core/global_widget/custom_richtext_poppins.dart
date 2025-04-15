@@ -16,7 +16,12 @@ class CustomRichtextPoppins extends StatelessWidget {
     this.secFontSize,
     this.onPrimePressed,
     this.onSecPressed,
-    this.textDecoration, this.tertiaryText, this.tertTextColor, this.tertFontWeight, this.tertFontSize, this.onTertPressed,
+    this.textDecoration,
+    this.tertiaryText,
+    this.tertTextColor,
+    this.tertFontWeight,
+    this.tertFontSize,
+    this.onTertPressed,
   });
 
   final String primaryText;
@@ -48,8 +53,9 @@ class CustomRichtextPoppins extends StatelessWidget {
               fontWeight: primeFontWeight ?? FontWeight.w400,
               fontSize: primeFontSize ?? 14.sp,
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = onSecPressed, // Click event for primary text
+            recognizer:
+                TapGestureRecognizer()
+                  ..onTap = onSecPressed, // Click event for primary text
           ),
           TextSpan(
             text: secondaryText,
@@ -59,8 +65,9 @@ class CustomRichtextPoppins extends StatelessWidget {
               color: secTextColor ?? const Color(0xFFFF3D00),
               decoration: textDecoration ?? TextDecoration.none,
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = onSecPressed, // Click event for secondary text
+            recognizer:
+                TapGestureRecognizer()
+                  ..onTap = onSecPressed, // Click event for secondary text
           ),
           TextSpan(
             text: tertiaryText,
@@ -70,8 +77,9 @@ class CustomRichtextPoppins extends StatelessWidget {
               color: tertTextColor ?? const Color(0xFFFF3D00),
               decoration: textDecoration ?? TextDecoration.none,
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = onTertPressed, // Click event for secondary text
+            recognizer:
+                TapGestureRecognizer()
+                  ..onTap = onTertPressed, // Click event for secondary text
           ),
         ],
       ),
